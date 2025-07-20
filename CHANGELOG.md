@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/jpb06/effect-github-actions-layer/compare/v1.1.1...v1.2.0) (2025-07-20)
+
+
+### Features
+
+* export both layer aggregation object and layer tag ([#8](https://github.com/jpb06/effect-github-actions-layer/issues/8)) ([5ec4453](https://github.com/jpb06/effect-github-actions-layer/commit/5ec4453d26d9feffa8776e326dbfda608193b923))
+
 ## [1.1.1](https://github.com/jpb06/effect-github-actions-layer/compare/v1.1.0...v1.1.1) (2025-07-20)
 
 
