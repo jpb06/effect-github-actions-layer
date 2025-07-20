@@ -27,6 +27,8 @@ bun i effect-github-actions-layer
 
 ### 🔶 Use the layer
 
+You can use the `GithubActionsLayer` object:
+
 ```typescript
 import { Effect, Layer, pipe } from 'effect';
 
@@ -36,7 +38,29 @@ import {
 } from 'effect-github-actions-layer';
 
 const task = pipe(
-  GithubActionsLayer.exec('ls -la'),
+  GithubActionsLayer.exec('git diff', ['--quiet', './*'], {
+    ignoreReturnCode: true,
+  }),
+  Effect.provide(GithubActionsLayerLive)
+);
+```
+
+Or you can use the layer tag directly:
+
+```typescript
+import {
+  GithubActions,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  Effect.gen(function* () {
+    const { exec } = yield* GithubActions;
+
+    const result = yield* exec('git diff', ['--quiet', './*'], {
+      ignoreReturnCode: true,
+    });
+  }),
   Effect.provide(GithubActionsLayerLive)
 );
 ```
@@ -60,7 +84,7 @@ const task = pipe(
 type exportVariable = (
   name: string,
   value: unknown
-) => Effect.Effect<void, GithubActionsLayerError, GithubActionsOps>;
+) => Effect.Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -82,7 +106,7 @@ const task = pipe(
 type setOutput = (
   name: string,
   value: unknown
-) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -103,7 +127,7 @@ const task = pipe(
 type getBooleanInput = (
   name: string,
   options?: InputOptions
-) => Effect<boolean, GithubActionsLayerError, GithubActionsOps>;
+) => Effect<boolean, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -127,7 +151,7 @@ const task = pipe(
 type getInput = (
   name: string,
   options?: InputOptions
-) => Effect<string, GithubActionsLayerError, GithubActionsOps>;
+) => Effect<string, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -151,7 +175,7 @@ const task = pipe(
 type getMultilineInput = (
   name: string,
   options?: InputOptions
-) => Effect<string[], GithubActionsLayerError, GithubActionsOps>;
+) => Effect<string[], GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -180,7 +204,7 @@ const task = pipe(
 // Type
 type setFailed = (
   message: string
-) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -209,7 +233,7 @@ const task = pipe(
 type saveState = (
   name: string,
   value: unknown
-) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -230,7 +254,7 @@ const task = pipe(
 // Type
 type getState = (
   name: string
-) => Effect<string, GithubActionsLayerError, GithubActionsOps>;
+) => Effect<string, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -260,7 +284,11 @@ const task = pipe(
 
 ```typescript
 // Type
-type isDebug = () => Effect<boolean, GithubActionsLayerError, GithubActionsOps>;
+type isDebug = () => Effect<
+  boolean,
+  GithubActionsLayerError,
+  GithubActionsInterface
+>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -283,7 +311,7 @@ const task = pipe(
 // Type
 type debug = (
   message: string
-) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -304,7 +332,7 @@ const task = pipe(
 // Type
 type info = (
   message: string
-) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -325,7 +353,7 @@ const task = pipe(
 // Type
 type warning = (
   message: string
-) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -354,7 +382,7 @@ type exec = (
   commandLine: string,
   args?: string[],
   options?: ExecOptions
-) => Effect<number, GithubActionsLayerError, GithubActionsOps>;
+) => Effect<number, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
 import { Effect, Layer, pipe } from 'effect';
@@ -386,7 +414,7 @@ import type { GithubContext } from 'effect-github-actions-layer';
 type getContext = () => Effect<
   GithubContext,
   GithubActionsLayerError,
-  GithubActionsOps
+  GithubActionsInterface
 >;
 
 // Usage
