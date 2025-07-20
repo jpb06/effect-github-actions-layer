@@ -56,19 +56,45 @@ const task = pipe(
 #### 🧿 `exportVariable`
 
 ```typescript
+// Type
 type exportVariable = (
   name: string,
   value: unknown
 ) => Effect.Effect<void, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  GithubActionsLayer.exportVariable('myVar', 1),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 #### 🧿 `setOutput`
 
 ```typescript
+// Type
 type setOutput = (
   name: string,
   value: unknown
 ) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  GithubActionsLayer.setOutput('success', true),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 #### 🧿 `getBooleanInput`
@@ -78,24 +104,68 @@ type getBooleanInput = (
   name: string,
   options?: InputOptions
 ) => Effect<boolean, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  Effect.gen(function* () {
+    const myBoolean = yield* GithubActionsLayer.getBooleanInput('my-var');
+  }),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 #### 🧿 `getInput`
 
 ```typescript
+// Type
 type getInput = (
   name: string,
   options?: InputOptions
 ) => Effect<string, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  Effect.gen(function* () {
+    const myString = yield* GithubActionsLayer.getInput('my-var');
+  }),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 #### 🧿 `getMultilineInput`
 
 ```typescript
+// Type
 type getMultilineInput = (
   name: string,
   options?: InputOptions
 ) => Effect<string[], GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  Effect.gen(function* () {
+    const myStringArray = yield* GithubActionsLayer.getMultilineInput('my-var');
+  }),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 ### 🔶 [@actions/core - exit codes](https://github.com/actions/toolkit/tree/main/packages/core#exit-codes)
@@ -107,9 +177,22 @@ type getMultilineInput = (
 #### 🧿 `setFailed`
 
 ```typescript
+// Type
 type setFailed = (
   message: string
 ) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  GithubActionsLayer.setFailed('Oh no!'),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 ### 🔶 [@actions/core - action state](https://github.com/actions/toolkit/tree/main/packages/core#action-state)
@@ -122,18 +205,46 @@ type setFailed = (
 #### 🧿 `saveState`
 
 ```typescript
+// Type
 type saveState = (
   name: string,
   value: unknown
 ) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  GithubActionsLayer.saveState('myVar', 1),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 #### 🧿 `getState`
 
 ```typescript
+// Type
 type getState = (
   name: string
 ) => Effect<string, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  Effect.gen(function* () {
+    const myString = yield* GithubActionsLayer.getState('myVar');
+  }),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 ### 🔶 [@actions/core - logging](https://github.com/actions/toolkit/tree/main/packages/core#logging)
@@ -148,31 +259,85 @@ type getState = (
 #### 🧿 `isDebug`
 
 ```typescript
+// Type
 type isDebug = () => Effect<boolean, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  Effect.gen(function* () {
+    const debug = yield* GithubActionsLayer.isDebug();
+  }),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 #### 🧿 `debug`
 
 ```typescript
+// Type
 type debug = (
   message: string
 ) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  GithubActionsLayer.debug('Blah blah'),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 #### 🧿 `info`
 
 ```typescript
+// Type
 type info = (
   message: string
 ) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  GithubActionsLayer.info('Blah blah'),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 #### 🧿 `warning`
 
 ```typescript
+// Type
 type warning = (
   message: string
 ) => Effect<void, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  GithubActionsLayer.warning('Blah blah'),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 ### 🔶 [@actions/exec](https://github.com/actions/toolkit/tree/main/packages/exec)
@@ -184,11 +349,26 @@ type warning = (
 #### 🧿 `exec`
 
 ```typescript
+// type
 type exec = (
   commandLine: string,
   args?: string[],
   options?: ExecOptions
 ) => Effect<number, GithubActionsLayerError, GithubActionsOps>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  Effect.gen(function* () {
+    const result = yield* GithubActionsLayer.exec('git reset', ['--hard']);
+  }),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
 
 ### 🔶 [@actions/github](https://github.com/actions/toolkit/tree/main/packages/github)
@@ -200,9 +380,26 @@ type exec = (
 #### 🧿 `getContext`
 
 ```typescript
+// Type
+import type { GithubContext } from 'effect-github-actions-layer';
+
 type getContext = () => Effect<
-  Context,
+  GithubContext,
   GithubActionsLayerError,
   GithubActionsOps
 >;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  Effect.gen(function* () {
+    const githubContext = yield* GithubActionsLayer.getContext();
+  }),
+  Effect.provide(GithubActionsLayerLive)
+);
 ```
