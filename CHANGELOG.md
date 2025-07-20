@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/jpb06/effect-github-actions-layer/compare/v1.1.0...v1.1.1) (2025-07-20)
+
+
+### Bug Fixes
+
+* export `GithubActionsOps` interface ([#6](https://github.com/jpb06/effect-github-actions-layer/issues/6)) ([68dad9a](https://github.com/jpb06/effect-github-actions-layer/commit/68dad9adc4bfd62e1daf881f0a696809e4953d9a))
+
 ## [1.1.0](https://github.com/jpb06/effect-github-actions-layer/compare/v1.0.0...v1.1.0) (2025-07-20)
 
 
