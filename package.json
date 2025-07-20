@@ -1,0 +1,68 @@
+{
+  "name": "effect-github-actions-layer",
+  "version": "1.0.0",
+  "author": "jpb06 <jp.bois.06@outlook.fr>",
+  "description": "An effect layer to interact with github actions toolkit",
+  "keywords": [
+    "effect",
+    "github-actions"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jpb06/effect-github-actions-layer.git"
+  },
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "types": "./dts/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dts/index.d.ts",
+        "default": "./cjs/index.js"
+      },
+      "import": {
+        "types": "./dts/index.d.ts",
+        "default": "./esm/index.js"
+      }
+    }
+  },
+  "engines": {
+    "node": ">=20.x"
+  },
+  "scripts": {
+    "update-deps": "bun npm-check-updates --root --format group -i",
+    "copy-package": "copyfiles package.json ./dist/",
+    "copy-readme": "copyfiles README.md ./dist/",
+    "build": "del-cli ./dist && bun build-esm && bun build-cjs",
+    "build-esm": "tsc --project tsconfig.esm.json",
+    "build-cjs": "tsc --project tsconfig.cjs.json",
+    "postbuild-cjs": "echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
+    "postbuild-esm": "echo '{\"type\": \"module\"}' > dist/esm/package.json",
+    "postbuild": "bun run copy-package && bun run copy-readme && bun resolve-ts-paths-esm",
+    "format": "biome format --write ./src",
+    "format-ci": "biome format ./src",
+    "lint": "biome lint ./src",
+    "type-check": "tsc --noEmit",
+    "sync-icons": "bun generateReadmeIcons -h 50"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@actions/core": "1.x",
+    "@actions/exec": "1.x",
+    "@actions/github": "6.x",
+    "effect": "3.x"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.1.2",
+    "@types/bun": "latest",
+    "copyfiles": "2.4.1",
+    "del-cli": "6.0.0",
+    "effect-errors": "1.10.14",
+    "npm-check-updates": "18.0.1",
+    "readme-package-icons": "1.2.2",
+    "ts-paths-resolver": "1.2.68",
+    "tsx": "4.20.3",
+    "typescript": "5.8.3"
+  }
+}
