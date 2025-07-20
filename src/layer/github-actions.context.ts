@@ -5,7 +5,7 @@ import { type Effect, Context as EffectContext } from 'effect';
 import type { GithubActionsLayerError } from '@errors';
 import type { GithubContext } from '@types';
 
-export interface GithubActionsOps {
+export interface GithubActionsInterface {
   readonly debug: (
     message: string,
   ) => Effect.Effect<void, GithubActionsLayerError>;
@@ -58,5 +58,5 @@ export interface GithubActionsOps {
 }
 
 export const GithubActions =
-  EffectContext.GenericTag<GithubActionsOps>('github-actions');
+  EffectContext.GenericTag<GithubActionsInterface>('github-actions');
 export type GithubActionsLayer = (typeof GithubActions)['Service'];
