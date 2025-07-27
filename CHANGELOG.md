@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/jpb06/effect-github-actions-layer/compare/v1.2.0...v1.3.0) (2025-07-27)
+
+
+### Features
+
+* error effect ([#10](https://github.com/jpb06/effect-github-actions-layer/issues/10)) ([8c8c9cc](https://github.com/jpb06/effect-github-actions-layer/commit/8c8c9cc00f90f4ed84bb7dd114ff11858fab9d01))
+
 ## [1.2.0](https://github.com/jpb06/effect-github-actions-layer/compare/v1.1.1...v1.2.0) (2025-07-20)
 
 
