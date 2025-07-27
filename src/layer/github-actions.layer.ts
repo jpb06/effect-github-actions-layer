@@ -1,4 +1,4 @@
-import type { InputOptions } from '@actions/core';
+import type { AnnotationProperties, InputOptions } from '@actions/core';
 import type { ExecOptions } from '@actions/exec';
 
 import { tapLayer } from '@effects';
@@ -8,6 +8,8 @@ import { GithubActions } from './github-actions.context.js';
 export const GithubActionsLayer = {
   debug: (message: string) =>
     tapLayer(GithubActions, ({ debug }) => debug(message)),
+  error: (message: string, properties?: AnnotationProperties) =>
+    tapLayer(GithubActions, ({ error }) => error(message, properties)),
   exec: (commandLine: string, args?: string[], options?: ExecOptions) =>
     tapLayer(GithubActions, ({ exec }) => exec(commandLine, args, options)),
   exportVariable: (name: string, value: unknown) =>
@@ -36,6 +38,6 @@ export const GithubActionsLayer = {
     tapLayer(GithubActions, ({ setFailed }) => setFailed(message)),
   setOutput: (name: string, value: unknown) =>
     tapLayer(GithubActions, ({ setOutput }) => setOutput(name, value)),
-  warning: (message: string) =>
-    tapLayer(GithubActions, ({ warning }) => warning(message)),
+  warning: (message: string, properties?: AnnotationProperties) =>
+    tapLayer(GithubActions, ({ warning }) => warning(message, properties)),
 };

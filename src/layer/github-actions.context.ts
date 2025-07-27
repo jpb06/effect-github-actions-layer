@@ -1,4 +1,4 @@
-import type { InputOptions } from '@actions/core';
+import type { AnnotationProperties, InputOptions } from '@actions/core';
 import type { ExecOptions } from '@actions/exec';
 import { type Effect, Context as EffectContext } from 'effect';
 
@@ -8,6 +8,10 @@ import type { GithubContext } from '@types';
 export interface GithubActionsInterface {
   readonly debug: (
     message: string,
+  ) => Effect.Effect<void, GithubActionsLayerError>;
+  readonly error: (
+    message: string,
+    properties?: AnnotationProperties,
   ) => Effect.Effect<void, GithubActionsLayerError>;
   readonly exec: (
     commandLine: string,
@@ -54,6 +58,7 @@ export interface GithubActionsInterface {
   ) => Effect.Effect<void, GithubActionsLayerError>;
   readonly warning: (
     message: string,
+    properties?: AnnotationProperties,
   ) => Effect.Effect<void, GithubActionsLayerError>;
 }
 

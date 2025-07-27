@@ -2,6 +2,7 @@ import { Layer } from 'effect';
 
 import {
   debugEffect,
+  errorEffect,
   execEffect,
   exportVariableEffect,
   getBooleanInputEffect,
@@ -21,6 +22,7 @@ import { GithubActions } from './github-actions.context.js';
 
 export const GithubActionsLayerLive = Layer.succeed(GithubActions, {
   debug: debugEffect,
+  error: errorEffect,
   exec: execEffect,
   exportVariable: exportVariableEffect,
   getContext: getContextEffect,
