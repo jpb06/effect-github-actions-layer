@@ -1,4 +1,5 @@
 export * from './debug.effect.js';
+export * from './error.effect.js';
 export * from './exec.effect.js';
 export * from './export-variable.effect.js';
 export * from './get-boolean-input.effect.js';

@@ -1,21 +1,21 @@
-import { type AnnotationProperties, warning } from '@actions/core';
+import { type AnnotationProperties, error } from '@actions/core';
 import { Effect, pipe } from 'effect';
 
 import { GithubActionsLayerError } from '@errors';
 
-export const warningEffect = (
+export const errorEffect = (
   message: string,
   properties?: AnnotationProperties,
 ) =>
   pipe(
     Effect.try({
-      try: () => warning(message, properties),
+      try: () => error(message, properties),
       catch: (e) =>
         new GithubActionsLayerError({
           cause: e,
         }),
     }),
-    Effect.withSpan('github-actions-layer/warning', {
+    Effect.withSpan('github-actions-layer/error', {
       attributes: {
         message,
         properties,

@@ -81,7 +81,7 @@ const task = pipe(
 
 ```typescript
 // Type
-type exportVariable = (
+type ExportVariableEffect = (
   name: string,
   value: unknown
 ) => Effect.Effect<void, GithubActionsLayerError, GithubActionsInterface>;
@@ -103,7 +103,7 @@ const task = pipe(
 
 ```typescript
 // Type
-type setOutput = (
+type SetOutputEffect = (
   name: string,
   value: unknown
 ) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
@@ -124,7 +124,7 @@ const task = pipe(
 #### 🧿 `getBooleanInput`
 
 ```typescript
-type getBooleanInput = (
+type GetBooleanInputEffect = (
   name: string,
   options?: InputOptions
 ) => Effect<boolean, GithubActionsLayerError, GithubActionsInterface>;
@@ -148,7 +148,7 @@ const task = pipe(
 
 ```typescript
 // Type
-type getInput = (
+type GetInputEffect = (
   name: string,
   options?: InputOptions
 ) => Effect<string, GithubActionsLayerError, GithubActionsInterface>;
@@ -172,7 +172,7 @@ const task = pipe(
 
 ```typescript
 // Type
-type getMultilineInput = (
+type GetMultilineInputEffect = (
   name: string,
   options?: InputOptions
 ) => Effect<string[], GithubActionsLayerError, GithubActionsInterface>;
@@ -202,7 +202,7 @@ const task = pipe(
 
 ```typescript
 // Type
-type setFailed = (
+type SetFailedEffect = (
   message: string
 ) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
@@ -230,7 +230,7 @@ const task = pipe(
 
 ```typescript
 // Type
-type saveState = (
+type SaveStateEffect = (
   name: string,
   value: unknown
 ) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
@@ -252,7 +252,7 @@ const task = pipe(
 
 ```typescript
 // Type
-type getState = (
+type GetStateEffect = (
   name: string
 ) => Effect<string, GithubActionsLayerError, GithubActionsInterface>;
 
@@ -279,12 +279,13 @@ const task = pipe(
 | [`debug`](#-debug)     | Create a debug level log ([not visible by default](https://github.com/actions/toolkit/blob/main/docs/action-debugging.md#how-to-access-step-debug-logs)) |
 | [`info`](#-info)       | Create an info level log                                                                                                                                 |
 | [`warning`](#-warning) | Create a warning level log                                                                                                                               |
+| [`error`](#-error)     | Create an error level log                                                                                                                                |
 
 #### 🧿 `isDebug`
 
 ```typescript
 // Type
-type isDebug = () => Effect<
+type IsDebugEffect = () => Effect<
   boolean,
   GithubActionsLayerError,
   GithubActionsInterface
@@ -309,7 +310,7 @@ const task = pipe(
 
 ```typescript
 // Type
-type debug = (
+type DebugEffect = (
   message: string
 ) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
@@ -330,7 +331,7 @@ const task = pipe(
 
 ```typescript
 // Type
-type info = (
+type InfoEffect = (
   message: string
 ) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
@@ -351,8 +352,9 @@ const task = pipe(
 
 ```typescript
 // Type
-type warning = (
-  message: string
+type WarningEffect = (
+  message: string,
+  properties?: AnnotationProperties
 ) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
 
 // Usage
@@ -368,6 +370,28 @@ const task = pipe(
 );
 ```
 
+#### 🧿 `error`
+
+```typescript
+// Type
+type ErrorEffect = (
+  message: string,
+  properties?: AnnotationProperties
+) => Effect<void, GithubActionsLayerError, GithubActionsInterface>;
+
+// Usage
+import { Effect, Layer, pipe } from 'effect';
+import {
+  GithubActionsLayer,
+  GithubActionsLayerLive,
+} from 'effect-github-actions-layer';
+
+const task = pipe(
+  GithubActionsLayer.error('Blah blah'),
+  Effect.provide(GithubActionsLayerLive)
+);
+```
+
 ### 🔶 [@actions/exec](https://github.com/actions/toolkit/tree/main/packages/exec)
 
 | function         | description                          |
@@ -378,7 +402,7 @@ const task = pipe(
 
 ```typescript
 // type
-type exec = (
+type ExecEffect = (
   commandLine: string,
   args?: string[],
   options?: ExecOptions
@@ -411,7 +435,7 @@ const task = pipe(
 // Type
 import type { GithubContext } from 'effect-github-actions-layer';
 
-type getContext = () => Effect<
+type GetContextEffect = () => Effect<
   GithubContext,
   GithubActionsLayerError,
   GithubActionsInterface

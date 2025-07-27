@@ -1,3 +1,5 @@
+export type { AnnotationProperties } from '@actions/core';
+
 export { GithubActionsLayerError } from './errors/github-actions-layer.error.js';
 export type { GithubActionsInterface } from './layer/github-actions.context.js';
 export { GithubActions } from './layer/github-actions.context.js';
