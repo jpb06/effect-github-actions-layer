@@ -12,7 +12,7 @@
         "npm-check-updates": "18.0.1",
         "readme-package-icons": "1.2.2",
         "ts-paths-resolver": "1.2.68",
-        "tsx": "4.20.3",
+        "tsx": "4.20.5",
         "typescript": "5.8.3",
       },
       "peerDependencies": {
@@ -412,7 +412,7 @@
 
     "ts-paths-resolver": ["ts-paths-resolver@1.2.68", "", { "dependencies": { "comment-json": "4.2.5", "effect-errors": "1.10.14", "glob": "11.0.3", "picocolors": "1.1.1", "yargs": "18.0.0" }, "peerDependencies": { "@effect/cluster": "0.x", "@effect/platform": "0.x", "@effect/platform-node": "0.x", "@effect/rpc": "0.x", "effect": "3.x" }, "bin": { "resolve-ts-paths": "cjs/cli/resolve-ts-paths.cli.js", "resolve-ts-paths-esm": "esm/cli/resolve-ts-paths.cli.js" } }, "sha512-hE9CUJq5UgnJgSQLWppbnodcv8s5lASqrV6dswiiovM/9OsD2pGyNj4fHRiL1qZj2itj9lkhE7/z8/a66G17xQ=="],
 
-    "tsx": ["tsx@4.20.3", "", { "dependencies": { "esbuild": "~0.25.0", "get-tsconfig": "^4.7.5" }, "optionalDependencies": { "fsevents": "~2.3.3" }, "bin": { "tsx": "dist/cli.mjs" } }, "sha512-qjbnuR9Tr+FJOMBqJCW5ehvIo/buZq7vH7qD7JziU98h6l3qGy0a/yPFjwO+y0/T7GFpNgNAvEcPPVfyT8rrPQ=="],
+    "tsx": ["tsx@4.20.5", "", { "dependencies": { "esbuild": "~0.25.0", "get-tsconfig": "^4.7.5" }, "optionalDependencies": { "fsevents": "~2.3.3" }, "bin": { "tsx": "dist/cli.mjs" } }, "sha512-+wKjMNU9w/EaQayHXb7WA7ZaHY6hN8WgfvHNQ3t1PnU91/7O8TcTnIhCDYTZwnt8JsO9IBqZ30Ln1r7pPF52Aw=="],
 
     "tunnel": ["tunnel@0.0.6", "", {}, "sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg=="],
 
