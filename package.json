@@ -58,7 +58,7 @@
     "@biomejs/biome": "2.2.3",
     "@types/bun": "latest",
     "copyfiles": "2.4.1",
-    "del-cli": "6.0.0",
+    "del-cli": "7.0.0",
     "effect-errors": "1.10.15",
     "npm-check-updates": "18.0.3",
     "readme-package-icons": "1.2.2",
