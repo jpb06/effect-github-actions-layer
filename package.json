@@ -49,7 +49,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@actions/core": "1.x",
+    "@actions/core": "1.x || 2.x",
     "@actions/exec": "1.x",
     "@actions/github": "6.x",
     "effect": "3.x"
