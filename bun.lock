@@ -19,7 +19,7 @@
       "peerDependencies": {
         "@actions/core": "1.x",
         "@actions/exec": "1.x",
-        "@actions/github": "6.x",
+        "@actions/github": "6.x || 7.x",
         "effect": "3.x",
       },
     },
