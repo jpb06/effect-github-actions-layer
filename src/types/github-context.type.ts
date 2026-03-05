@@ -1,3 +1,5 @@
-import { Context } from '@actions/github/lib/context.js';
+import type { context } from '@actions/github';
 
-export class GithubContext extends Context {}
+type Context = typeof context;
+
+export type GithubContext = Context;
