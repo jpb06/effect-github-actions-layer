@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jpb06/effect-github-actions-layer.git"
+    "url": "https://github.com/jpb06/effect-github-actions-layer"
   },
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
