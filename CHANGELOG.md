@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/jpb06/effect-github-actions-layer/compare/v1.3.0...v1.3.1) (2026-03-05)
+
+
+### Bug Fixes
+
+* context type export ([#58](https://github.com/jpb06/effect-github-actions-layer/issues/58)) ([171194d](https://github.com/jpb06/effect-github-actions-layer/commit/171194d45c1e910fe629d7cf05dd22dbe6d5a36e))
+
 ## [1.3.0](https://github.com/jpb06/effect-github-actions-layer/compare/v1.2.0...v1.3.0) (2025-07-27)
 
 
