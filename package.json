@@ -49,9 +49,9 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@actions/core": "1.x || 3.x",
-    "@actions/exec": "1.x || 3.x",
-    "@actions/github": "6.x || 9.x",
+    "@actions/core": "3.x",
+    "@actions/exec": "3.x",
+    "@actions/github": "9.x",
     "effect": "3.x"
   },
   "devDependencies": {
