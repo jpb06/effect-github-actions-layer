@@ -15,6 +15,7 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
+  id-token: write
 
 jobs:
   publish:
@@ -56,6 +57,7 @@ jobs:
       - name: 🚀 Publish package
         id: publish
         if: ${{ steps.release.outputs.release_created }}
-        run: npm publish ./dist --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: 'true'
+          NODE_AUTH_TOKEN: ''  # Clear placeholder set by setup-node to enable OIDC
+        run: npm publish ./dist --access public --provenance
